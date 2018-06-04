@@ -12,22 +12,22 @@ import {
   Dimensions,
   ScrollView
 } from 'react-native';
-const {height, width} = Dimensions.get('window'); //getting Height and Width device screen 
-console.disableYellowBox = true;
+const {height, width} = Dimensions.get('window'); //getting Height and Width of device screen 
+console.disableYellowBox = true;                 // Hidding unnecessary warnings
 
 type Props = {};
-export default class App extends Component<Props> {
+export default class CircleComponent extends Component<Props> {
  
  
-    constructor(props){
+    constructor(props){                        
       super(props);
-      this.state={
+      this.state={                            //States of the  component
         diameterOfCircle:width/2,
         inputData:'',
         textData:''
       }
   }
-  Check()   //cheacking Length of String
+  Check()                                      //cheacking Length of String
     {
       var meargeData = this.state.textData+this.state.inputData 
         if(meargeData.length < 140 )
@@ -54,12 +54,12 @@ export default class App extends Component<Props> {
                    onChangeText={(text) =>this.setState({inputData: text })}
                    value={this.state.inputData}
                 /> 
-                <TouchableOpacity    style={styles.button} onPress={()=>this.Check()} >
-                  <Text style={styles.BTNText}>Submit</Text>
+                <TouchableOpacity    style={styles.button} onPress={()=>this.Check()} >        
+                  <Text style={styles.BTNText}>Submit</Text>                                  
                 </TouchableOpacity>
-          </View>
-          <View style={{margin:'25%',top:'15%',}} >
-            <View  style={{
+           </View>
+           <View style={{margin:'25%',top:'15%',}} >
+             <View  style={{                                                // Circle View
                           width: this.state.diameterOfCircle,
                           height: this.state.diameterOfCircle,
                           borderRadius: this.state.diameterOfCircle/2,
@@ -72,16 +72,15 @@ export default class App extends Component<Props> {
                           
                         }}>
                     <Text style={{padding:5,alignItems:'center',justifyContent: 'center',  textAlign:'center',flexWrap: "wrap",position:'absolute'}}>{this.state.textData}</Text>
-            </View>
-        </View>
-    
+             </View>
+           </View>
+          </View>
+        </ScrollView>
       </View>
-     </ScrollView>
-     </View>
-  );
+    );
   }
 }
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({                                        //CSS For Views 
   SUPcontainer: {
     flex: 1,
     height:'95%',
@@ -119,14 +118,6 @@ const styles = StyleSheet.create({
       borderColor:'rgba(0,0,255,0.8)',
       padding: 10
     },
-    textStyle: {
-      alignSelf: 'center',
-      color: 'teal',
-      fontSize: 16,
-      fontWeight: '600',
-      paddingTop: 10,
-      paddingBottom: 10,
-  },
   BTNText: {
     color: 'rgba(255,255,255,0.8)',
     fontSize: 16,
